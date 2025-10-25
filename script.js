@@ -33,7 +33,15 @@ function playGame() {
             || humanChoice === "paper" && computerChoice === "scissors"
             || humanChoice === "scissors" && computerChoice === "rock";
 
-        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`);
+        function choicesSummary() {
+            console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`);
+        }
+
+        function pointsSummary() {
+            console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`);
+        }
+
+        choicesSummary()
 
         if (humanChoice === computerChoice) {
             console.log("No-one wins any points!");
@@ -48,7 +56,9 @@ function playGame() {
             return
         }
 
-        console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`);
+        pointsSummary()
+
+        
         return;
     }
 
