@@ -33,20 +33,20 @@ function playGame() {
         function roundMessage() {
         return `You chose ${humanChoice} and the computer chose ${computerChoice}.`
         }
-
+        console.log(roundMessage())
         if (humanChoice === computerChoice) {
-            console.log(roundMessage().concat(" No-one wins any points!"));
+            console.log("No-one wins any points!");
             return;
         } else if (humanChoice === "rock" && computerChoice === "scissors"
             || humanChoice === "paper" && computerChoice === "rock"
             || humanChoice === "scissors" && computerChoice === "paper") {
-                console.log(roundMessage().concat(" You win one point!"));
+                console.log("You win one point!");
                 humanScore++;
                 return;
         } else if (humanChoice === "rock" && computerChoice === "paper"
             || humanChoice === "paper" && computerChoice === "scissors"
             || humanChoice === "scissors" && computerChoice === "rock") {
-                console.log(roundMessage().concat(" The computer wins one point!"));
+                console.log("The computer wins one point!");
                 computerScore++;
                 return;
         } else {
