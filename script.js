@@ -1,4 +1,7 @@
-console.log("Hello, world.");
+function getHumanChoice() {
+    let humanChoice = window.prompt("Rock, Paper, or Scissors?").toLowerCase();
+    return humanChoice;
+}
 
 function getComputerChoice() {
     let randomInt = Math.floor(Math.random() * 3);
@@ -12,65 +15,10 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let humanChoice = window.prompt("Rock, Paper, or Scissors?").toLowerCase();
-    return humanChoice;
-    }
-
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound() {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-
-        const isHumanWin = humanChoice === "rock" && computerChoice === "scissors"
-            || humanChoice === "paper" && computerChoice === "rock"
-            || humanChoice === "scissors" && computerChoice === "paper";
-
-        const isComputerWin = humanChoice === "rock" && computerChoice === "paper"
-            || humanChoice === "paper" && computerChoice === "scissors"
-            || humanChoice === "scissors" && computerChoice === "rock";
-
-        function choicesSummary() {
-            console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`);
-        }
-
-        function pointsSummary() {
-            console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`);
-        }
-
-        choicesSummary()
-
-        if (humanChoice === computerChoice) {
-            console.log("No-one wins any points!");
-        } else if (isHumanWin) {
-                console.log("You win one point!");
-                humanScore++;
-        } else if (isComputerWin) {
-                console.log("The computer wins one point!");
-                computerScore++;
-        } else {
-            console.log(`"${humanChoice}" is not a valid choice.`);
-            return
-        }
-
-        pointsSummary()
-
-        
-        return;
-    }
-
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-
+function calculateOverallWinner(humanScore, computerScore) {
     switch (true) {
         case humanScore > computerScore:
-            console.log("Congratulations, you've one!");
+            console.log("Congratulations, you've won!");
             return;
         case humanScore < computerScore:
             console.log("Bad luck, you've lost!");
@@ -78,6 +26,61 @@ function playGame() {
         case humanScore === computerScore:
             console.log("It's a draw!");
     }
+}
+
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playRound() {
+
+        function choicesSummary() {
+            console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`);
+        }
+
+        function calculateRoundWinner() {
+            const isHumanWin = humanChoice === "rock" && computerChoice === "scissors"
+                || humanChoice === "paper" && computerChoice === "rock"
+                || humanChoice === "scissors" && computerChoice === "paper";
+
+            const isComputerWin = humanChoice === "rock" && computerChoice === "paper"
+                || humanChoice === "paper" && computerChoice === "scissors"
+                || humanChoice === "scissors" && computerChoice === "rock";
+
+            if (humanChoice === computerChoice) {
+            console.log("No-one wins any points!");
+            } else if (isHumanWin) {
+                console.log("You win one point!");
+                humanScore++;
+            } else if (isComputerWin) {
+                console.log("The computer wins one point!");
+                computerScore++;
+            } else {
+                console.log(`"${humanChoice}" is not a valid choice.`);
+            }
+        }
+
+        function pointsSummary() {
+            console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`);
+        }
+
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        choicesSummary();
+        calculateRoundWinner();
+        pointsSummary();
+
+    }
+
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+
+    calculateOverallWinner(humanScore, computerScore);
+
 }
 
 playGame();
