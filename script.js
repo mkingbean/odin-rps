@@ -29,23 +29,28 @@ function playGame() {
     function playRound() {
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
+
+        function roundMessage() {
+        return `You chose ${humanChoice} and the computer chose ${computerChoice}.`
+        }
+
         if (humanChoice === computerChoice) {
-            window.console.log("It's a draw!");
+            console.log(roundMessage().concat(" No-one wins any points!"));
             return;
         } else if (humanChoice === "rock" && computerChoice === "scissors"
             || humanChoice === "paper" && computerChoice === "rock"
             || humanChoice === "scissors" && computerChoice === "paper") {
-                window.console.log("You win!");
-                humanScore += 1;
+                console.log(roundMessage().concat(" You win one point!"));
+                humanScore++;
                 return;
         } else if (humanChoice === "rock" && computerChoice === "paper"
             || humanChoice === "paper" && computerChoice === "scissors"
             || humanChoice === "scissors" && computerChoice === "rock") {
-                window.console.log("You lose!");
-                computerScore += 1;
+                console.log(roundMessage().concat(" The computer wins one point!"));
+                computerScore++;
                 return;
         } else {
-            console.log("Invalid choice");
+            console.log(`"${humanChoice}" is not a valid choice.`);
             return;
         }
     }
