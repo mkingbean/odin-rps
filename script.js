@@ -14,13 +14,8 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let humanChoice = window.prompt("Rock, Paper, or Scissors?").toLowerCase();
-    switch (humanChoice) {
-        case "rock":
-        case "paper":
-        case "scissors":
-            return humanChoice;
+    return humanChoice;
     }
-}
 
 function playGame() {
     let humanScore = 0;
@@ -30,7 +25,7 @@ function playGame() {
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
 
-        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`)
+        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`);
 
         if (humanChoice === computerChoice) {
             console.log("No-one wins any points!");
@@ -49,8 +44,8 @@ function playGame() {
             return
         }
 
-        console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`)
-        return
+        console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`);
+        return;
     }
 
     playRound();
@@ -70,3 +65,5 @@ function playGame() {
             console.log("It's a draw!");
     }
 }
+
+playGame();
