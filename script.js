@@ -25,18 +25,22 @@ function playGame() {
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
 
+        const isHumanWin = humanChoice === "rock" && computerChoice === "scissors"
+            || humanChoice === "paper" && computerChoice === "rock"
+            || humanChoice === "scissors" && computerChoice === "paper";
+
+        const isComputerWin = humanChoice === "rock" && computerChoice === "paper"
+            || humanChoice === "paper" && computerChoice === "scissors"
+            || humanChoice === "scissors" && computerChoice === "rock";
+
         console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`);
 
         if (humanChoice === computerChoice) {
             console.log("No-one wins any points!");
-        } else if (humanChoice === "rock" && computerChoice === "scissors"
-            || humanChoice === "paper" && computerChoice === "rock"
-            || humanChoice === "scissors" && computerChoice === "paper") {
+        } else if (isHumanWin) {
                 console.log("You win one point!");
                 humanScore++;
-        } else if (humanChoice === "rock" && computerChoice === "paper"
-            || humanChoice === "paper" && computerChoice === "scissors"
-            || humanChoice === "scissors" && computerChoice === "rock") {
+        } else if (isComputerWin) {
                 console.log("The computer wins one point!");
                 computerScore++;
         } else {
