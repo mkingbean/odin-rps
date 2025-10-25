@@ -18,10 +18,10 @@ function getComputerChoice() {
 function calculateOverallWinner(humanScore, computerScore) {
     switch (true) {
         case humanScore > computerScore:
-            console.log("Congratulations, you've won!");
+            console.log("Congratulations, you've won the game!");
             return;
         case humanScore < computerScore:
-            console.log("Bad luck, you've lost!");
+            console.log("Bad luck, you've lost the game!");
             return;
         case humanScore === computerScore:
             console.log("It's a draw!");
