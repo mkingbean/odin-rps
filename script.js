@@ -30,29 +30,27 @@ function playGame() {
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
 
-        function roundMessage() {
-        return `You chose ${humanChoice} and the computer chose ${computerChoice}.`
-        }
-        console.log(roundMessage())
+        console.log(`You chose ${humanChoice} and the computer chose ${computerChoice}.`)
+
         if (humanChoice === computerChoice) {
             console.log("No-one wins any points!");
-            return;
         } else if (humanChoice === "rock" && computerChoice === "scissors"
             || humanChoice === "paper" && computerChoice === "rock"
             || humanChoice === "scissors" && computerChoice === "paper") {
                 console.log("You win one point!");
                 humanScore++;
-                return;
         } else if (humanChoice === "rock" && computerChoice === "paper"
             || humanChoice === "paper" && computerChoice === "scissors"
             || humanChoice === "scissors" && computerChoice === "rock") {
                 console.log("The computer wins one point!");
                 computerScore++;
-                return;
         } else {
             console.log(`"${humanChoice}" is not a valid choice.`);
-            return;
+            return
         }
+
+        console.log(`You have ${humanScore} points and the computer has ${computerScore} points.`)
+        return
     }
 
     playRound();
@@ -63,12 +61,12 @@ function playGame() {
 
     switch (true) {
         case humanScore > computerScore:
-            console.log("You win the whole game!");
+            console.log("Congratulations, you've one!");
             return;
         case humanScore < computerScore:
-            console.log("You lose the whole game");
+            console.log("Bad luck, you've lost!");
             return;
         case humanScore === computerScore:
-            console.log("The whole game is a draw!");
+            console.log("It's a draw!");
     }
 }
