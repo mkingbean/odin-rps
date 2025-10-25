@@ -4,10 +4,24 @@ function getComputerChoice() {
     let randomInt = Math.floor(Math.random() * 3);
     switch (randomInt) {
         case 0:
-            return "Rock";
+            return "rock";
+            break
         case 1:
-            return "Paper";
+            return "paper";
+            break
         case 2:
-            return "Scissors";
+            return "scissors";
+            break
+    }
+}
+
+function getHumanChoice() {
+    let humanChoice = window.prompt("Rock, Paper, or Scissors?").toLowerCase();
+    switch (humanChoice) {
+        case "rock":
+        case "paper":
+        case "scissors":
+            return humanChoice;
+            break
     }
 }
